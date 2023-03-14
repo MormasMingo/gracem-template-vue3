@@ -59,7 +59,7 @@
     font-weight: normal;
 }
 
-body {
+/* body {
     min-height: 100vh;
     color: var(--color-text);
     background: var(--color-background);
@@ -72,4 +72,12 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+} */
+
+html,
+body {
+    width: 100vw;
+    height: 100vh;
+    padding: 0;
+    margin: 0;
 }
