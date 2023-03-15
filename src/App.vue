@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LayoutBasic from '@/layouts/LayoutBasic.vue';
+import { RouterView } from 'vue-router';
 </script>
 
 <template>
-    <LayoutBasic></LayoutBasic>
+    <RouterView></RouterView>
 </template>
 
 <style scoped></style>
