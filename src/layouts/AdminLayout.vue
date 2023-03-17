@@ -3,7 +3,7 @@
         <el-header>top</el-header>
 
         <el-container>
-            <el-aside>side</el-aside>
+            <Menu></Menu>
 
             <el-container>
                 <el-main>
@@ -18,6 +18,7 @@
 
 <script setup lang="ts">
 import { RouterView } from 'vue-router';
+import Menu from '@/components/Menu.vue';
 </script>
 
 <style lang=""></style>
