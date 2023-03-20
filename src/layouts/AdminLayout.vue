@@ -21,4 +21,8 @@ import { RouterView } from 'vue-router';
 import Menu from '@/components/Menu.vue';
 </script>
 
-<style lang=""></style>
+<style>
+.el-header {
+    border-bottom: 1px solid #ddd;
+}
+</style>

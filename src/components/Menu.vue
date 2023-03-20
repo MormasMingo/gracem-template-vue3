@@ -2,15 +2,10 @@
     <el-menu
         default-active="2"
         class="el-menu-vertical-demo"
-        :collapse="isCollapse"
+        :collapse="menuStore.isCollapse"
         @open="handleOpen"
         @close="handleClose"
     >
-        <el-radio-group v-model="isCollapse" style="margin-bottom: 20px">
-            <el-radio-button :label="false">expand</el-radio-button>
-            <el-radio-button :label="true">collapse</el-radio-button>
-        </el-radio-group>
-
         <el-sub-menu index="1">
             <template #title>
                 <el-icon><i-ep-location /></el-icon>
@@ -45,14 +40,15 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue';
+import { useMenuStore } from '@/stores';
 
-const isCollapse = ref(false);
+const menuStore = useMenuStore();
+
 const handleOpen = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath);
+    // console.log(key, keyPath);
 };
 const handleClose = (key: string, keyPath: string[]) => {
-    console.log(key, keyPath);
+    // console.log(key, keyPath);
 };
 </script>
 
