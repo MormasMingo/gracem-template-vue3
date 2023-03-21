@@ -6,8 +6,13 @@ import HomeView from '@/views/index/HomeView.vue';
 import AboutView from '@/views/index/AboutView.vue';
 import AdminView from '@/views/AdminView.vue';
 import AdminIndex from '@/views/admin/IndexView.vue';
+import AdminContentView from '@/views/admin/ContentView.vue';
 
-export default [
+import { routeConfig, makeRoute } from '@/config';
+import type { RouteRecordRaw } from 'vue-router';
+import type { RouteItem } from '@/config/route';
+
+const systemRoutes = [
     {
         path: '/login',
         name: 'login',
@@ -23,50 +28,41 @@ export default [
         name: '404',
         component: NotFoundView,
     },
-    {
-        path: '/',
-        name: 'index',
-        component: IndexView,
-        children: [
-            {
-                path: '',
-                name: 'home',
-                component: HomeView,
-            },
-
-            /* {
-                path: '/list',
-                name: 'list',
-            },
-            {
-                path: '/content',
-                name: 'content',
-            }, */
-            {
-                path: 'about',
-                name: 'about',
-                component: AboutView,
-            },
-        ],
-    },
-    {
-        path: '/admin',
-        name: 'admin',
-        component: AdminView,
-        children: [
-            {
-                path: '',
-                name: 'adminIndex',
-                component: AdminIndex,
-            },
-            /* {
-                path: '/list',
-                name: 'adminList',
-            },
-            {
-                path: '/content',
-                name: 'adminContent',
-            }, */
-        ],
-    },
 ];
+
+const indexRoute = {
+    path: '/',
+    name: 'index',
+    component: IndexView,
+    children: [
+        {
+            path: '',
+            name: 'home',
+            component: HomeView,
+        },
+
+        /* {
+            path: '/list',
+            name: 'list',
+        },
+        {
+            path: '/content',
+            name: 'content',
+        }, */
+        {
+            path: 'about',
+            name: 'about',
+            component: AboutView,
+        },
+    ],
+};
+
+const adminRoute: RouteItem | Array<RouteItem> = makeRoute(routeConfig);
+
+export default [
+    ...systemRoutes,
+    indexRoute,
+    adminRoute,
+] as Array<RouteRecordRaw>;
+
+export { adminRoute };
