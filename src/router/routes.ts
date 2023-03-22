@@ -5,7 +5,8 @@ import NotFoundView from '@/views/404View.vue';
 import HomeView from '@/views/index/HomeView.vue';
 import AboutView from '@/views/index/AboutView.vue';
 
-import { routeConfig, makeRoute } from '@/config';
+import { routeConfig } from '@/config';
+import { makeRoute } from '@/tools';
 import type { RouteRecordRaw } from 'vue-router';
 
 const systemRoutes = [

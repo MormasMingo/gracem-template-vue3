@@ -74,8 +74,9 @@
 <script lang="ts" setup>
 import { useMenuStore } from '@/stores';
 
-import { makeMenu, routeConfig } from '@/config';
-import type { MenuItem } from '@/config/menu';
+import { routeConfig } from '@/config';
+import type { MenuItem } from '@/tools';
+import { makeMenu } from '@/tools';
 
 import { Icon } from '@iconify/vue';
 
