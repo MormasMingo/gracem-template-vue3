@@ -9,6 +9,7 @@ export {}
 
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
+    DefaultRoute: typeof import('./components/DefaultRoute.vue')['default']
     ElContainer: typeof import('element-plus/es')['ElContainer']
     ElFooter: typeof import('element-plus/es')['ElFooter']
     ElHeader: typeof import('element-plus/es')['ElHeader']
@@ -35,6 +36,7 @@ declare module '@vue/runtime-core' {
     IEpLocation: typeof import('~icons/ep/location')['default']
     IEpMenu: typeof import('~icons/ep/menu')['default']
     IEpSetting: typeof import('~icons/ep/setting')['default']
+    IEpUser: typeof import('~icons/ep/user')['default']
     Menu: typeof import('./components/Menu.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']

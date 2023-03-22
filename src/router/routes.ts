@@ -4,13 +4,9 @@ import LogoutView from '@/views/LoginView.vue';
 import NotFoundView from '@/views/404View.vue';
 import HomeView from '@/views/index/HomeView.vue';
 import AboutView from '@/views/index/AboutView.vue';
-import AdminView from '@/views/AdminView.vue';
-import AdminIndex from '@/views/admin/IndexView.vue';
-import AdminContentView from '@/views/admin/ContentView.vue';
 
 import { routeConfig, makeRoute } from '@/config';
 import type { RouteRecordRaw } from 'vue-router';
-import type { RouteItem } from '@/config/route';
 
 const systemRoutes = [
     {
@@ -57,7 +53,8 @@ const indexRoute = {
     ],
 };
 
-const adminRoute: RouteItem | Array<RouteItem> = makeRoute(routeConfig);
+const adminRoute: RouteRecordRaw | Array<RouteRecordRaw> =
+    makeRoute(routeConfig);
 
 export default [
     ...systemRoutes,

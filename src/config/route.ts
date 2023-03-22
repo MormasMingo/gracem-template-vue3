@@ -1,16 +1,20 @@
 import type { RouteRecordRaw } from 'vue-router';
 
+import DefaultRoute from '@/components/DefaultRoute.vue';
+
 export default {
     path: '/admin',
     name: 'admin',
     component: 'AdminView',
     title: 'admin索引',
+
     children: [
         {
             path: '',
             name: 'adminIndex',
             component: 'IndexView',
             title: 'admin首页',
+            icon: 'ep-home-filled',
         },
         {
             path: 'content',
@@ -22,23 +26,38 @@ export default {
             path: 'list',
             name: 'adminList',
             component: 'ListView',
+            title: 'admin列表页',
             hidden: true,
+        },
+        {
+            path: 'user',
+            name: 'userIndex',
+            // component: '../components/DefaultRoute.vue',
+            title: '用户管理',
+            icon: 'ep-location',
+            children: [
+                {
+                    path: '',
+                    name: 'user',
+                    component: 'IndexView',
+                    title: '用户首页',
+                    icon: 'ep-user',
+                },
+            ],
         },
     ],
 };
 
+///////////////////////////////////////////////////////////////////////////////
+
 export declare type RouteConfigItem = {
     path: string;
     name: string;
-    component: string;
+    component?: string;
     title?: string;
+    icon?: string;
     hidden?: boolean;
     children?: Array<RouteConfigItem>;
-};
-
-export declare type RouteItem = RouteRecordRaw & {
-    title: string;
-    hidden: boolean;
 };
 
 const modules = import.meta.glob('../views/**/*.vue');
@@ -46,19 +65,20 @@ const modules = import.meta.glob('../views/**/*.vue');
 function makeRoute(
     configs: RouteConfigItem | Array<RouteConfigItem>,
     prePath: string = 'views'
-): RouteItem | Array<RouteItem> {
-    let routes: RouteItem | Array<RouteItem> = [];
+): RouteRecordRaw | Array<RouteRecordRaw> {
+    let routes: RouteRecordRaw | Array<RouteRecordRaw> = [];
 
-    const make = (config: RouteConfigItem): RouteItem => {
-        let route: RouteItem = {
+    const make = (config: RouteConfigItem): RouteRecordRaw => {
+        let route: RouteRecordRaw = {
             path: config.path,
             name: config.name,
-            component: modules[`../${prePath}/${config.component}.vue`],
-            title: config.title || '',
-            hidden: !!config.hidden,
+            component: config.component
+                ? modules[`../${prePath}/${config.component}.vue`]
+                : DefaultRoute,
         };
 
-        const currentPath: string = prePath + config.path;
+        const currentPath: string =
+            prePath + (config.path.indexOf('/') === 0 ? '' : '/') + config.path;
 
         if (config.children) {
             route = Object.assign(route, {
